@@ -66,7 +66,7 @@ The following schematic shows the basic driver structure. The arrows indicate co
 
 .. image:: rep-I000X/driver.jpg
 
-For additional details about driver functionality please refer to original documentation [#CP1616_doc]_ .
+For additional driver details please refer to original documentation [#CP1616_doc]_ .
 
 IO Base Library
 ---------
@@ -85,12 +85,19 @@ All three methods can be used simultaneously. Bandwidth sharing ensures that at 
 
 .. image:: rep-I000X/IO_cycle.jpg
 
-Original IO Base documentation including API is available here [#io_base_doc]_.
+Original IO Base documentation with API is available here [#io_base_doc]_.
 
 Real-time requirements
 =========
+1 .Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. 
+2. In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
 
-ToDo
+Testing OS setup 
+---------
+
+Standard OS:  Ubuntu 12.04 with Kernel 3.11.0.26
+Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
+
 
 Requirements
 =========
@@ -106,6 +113,7 @@ References
 .. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
 .. [#CP1616_doc] PGH_DK-16xx_76 (https://support.industry.siemens.com/cs/document/26436652?lc=en-SA)
 .. [#io_base_doc] PGH_IO-Base_76 (https://support.industry.siemens.com/cs/document/19779901?dti=0&lc=en-CZ)
+.. [rtai] RTAI (https://www.rtai.org/)
 
 Copyright
 ========
