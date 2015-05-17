@@ -76,11 +76,9 @@ References
 ========
 .. [#ros-i_roadmap] ROS-Industrial Roadmap (https://github.com/ros-industrial-consortium/roadmapping/blob/master/RoadmappingDocument.md)
 .. [#ros_canopen] ros_canopen library from IPA (http://wiki.ros.org/ros_canopen) 
-.. [#cp1616] Comunication procesor CP1616 
-(http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
+.. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
-.. [#siemens_sup] Development Kit DK-16xx PN IO 
-(http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
+.. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
 
 Copyright
 ========
