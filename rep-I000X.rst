@@ -89,8 +89,8 @@ Original IO Base documentation with API is available here [#io_base_doc]_.
 
 Real-time requirements
 =========
-1 .Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. 
-2. In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
+- Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. 
+- In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
 
 Testing OS setup 
 ---------
