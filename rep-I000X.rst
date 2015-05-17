@@ -74,7 +74,7 @@ ToDo
 
 References
 ========
-.. [#ROS-I Roadmap] ROS-Industrial Roadmap (https://github.com/ros-industrial-consortium/roadmapping/blob/master/RoadmappingDocument.md)
+.. [#ros-i_roadmap] ROS-Industrial Roadmap (https://github.com/ros-industrial-consortium/roadmapping/blob/master/RoadmappingDocument.md)
 .. [#ros_canopen] ros_canopen library from IPA (http://wiki.ros.org/ros_canopen) 
 .. [#cp1616] Comunication procesor CP1616 
 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
