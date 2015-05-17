@@ -51,8 +51,10 @@ The following graphic shows the software layers and communictation paths of DK-1
 .. image:: rep-I000X/overview.jpg
 
 Driver
+---------
 
 The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It 
+
  - processes interupts
  - maps the process image on the CP for the IO Base library
  - handles jobs between the IO Base library and the firmware on the CP
@@ -62,6 +64,7 @@ The following schematic shows the basic driver structure. The arrows indicate co
 .. image:: rep-I000X/driver.jpg
 
 IO Base Library
+---------
 
 IO-Base user programming interface provides all basic functions that a C user program requires to communicate with PROFINET IO devices. These are read/write IO data, send/receive alarms confirmations and read/write data records. 
 
