@@ -70,17 +70,11 @@ IO-Base user programming interface provides all basic functions that a C user pr
 
 The IO-Base library covers all three methods of exchanging data in PROFINET network:
 
-Acyclic IO data exchange
----------
-used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
+- Acyclic IO data exchange: used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
 
-Cyclic non-isochronous real-time IO data traffic (RT)
----------
-TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
+- Cyclic non-isochronous real-time IO data traffic (RT): TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
 
-Cyclic isochronous real-time IO data traffic (IRT)
----------
-By IRT, signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
+- Cyclic isochronous real-time IO data traffic (IRT): signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
 
 
 
