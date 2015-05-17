@@ -14,6 +14,7 @@ Outline
 #. Motivation_
 #. CP1616_
 #. `Existing Linux SW for CP1616`_
+#. `Real-time requirements` 
 #. Requirements_
 #. References_
 #. Copyright_
@@ -28,7 +29,7 @@ ToDo
 Motivation
 ========
 
-Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 - Profinet PCI card [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community. As the world’s most advanced open Industrial Ethernet solution we consider PROFINET in combination with existing PCI communication processors a viable way how to allow ROS-I systems to communicate with PLC's, HMIs, OPC servers and various industrial hardware. 
+Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. The goal of this project is therefore to develop a ROS-Profinet-wrapper for communication processor Siemens CP1616 [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community. We consider Profinet in combination with existing PCI compatible communication processors a viable way how to allow ROS-I systems to communicate with PLC's, HMIs, OPC servers and various industrial hardware. 
 
 
 CP1616
@@ -80,7 +81,10 @@ All three methods can be used simultaneously. Bandwidth sharing ensures that at 
 
 .. image:: rep-I000X/IO_cycle.jpg
 
+Original IO Base documentation including API is available here [#io_base_doc]_.
 
+Real-time requirements
+=========
 
 ToDo
 
@@ -96,7 +100,9 @@ References
 .. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
 .. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
-.. [#CP1616_doc] PGH_DK-16xx_76 https://support.industry.siemens.com/cs/document/26436652?lc=en-SA
+.. [#CP1616_doc] PGH_DK-16xx_76 (https://support.industry.siemens.com/cs/document/26436652?lc=en-SA)
+.. [#io_base_doc] PGH_IO-Base_76 (https://support.industry.siemens.com/cs/document/19779901?dti=0&lc=en-CZ)
+
 Copyright
 ========
 This document has been placed in the public domain
