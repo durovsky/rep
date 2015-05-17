@@ -12,10 +12,9 @@ Outline
 
 #. Abstract_
 #. Motivation_
-#. Definitions_
+#. CP1616_
+#. `Existing Linux SW for CP1616`_
 #. Requirements_
-#. `Design Assumptions`_
-#. `Todo's`_
 #. References_
 #. Copyright_
 
@@ -23,12 +22,14 @@ Outline
 Abstract
 ========
 
+ToDo
 
 
 Motivation
 ========
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 Profinet PCI card [#cp1616]_, in order to provide new hardware interface to ROS-Industrial community. PROFINET [#profinet]_ is the world’s most advanced open Industrial Ethernet solution based on TCP/IP and IT standards providing real-time Ethernet communications all the way to the lowest level of the factory. We therefore believe that using PROFINET in combination with existing PCI communication processors is viable way how to allow ROS-I systems to communicate with PLC's, HMIs, OPC servers and various industrial hardware. 
+
 
 CP1616
 ========
@@ -49,15 +50,24 @@ The following graphic shows the software layers and communictation path of DK-16
 
 .. image:: rep-I000X/overview_1.jpg
 
+Libraries description
 
+ToDo
+
+
+Requirements
+=========
+ToDo
 
 
 References
 ========
 .. [#ros_canopen] ros_canopen library from IPA (http://wiki.ros.org/ros_canopen) 
-.. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
+.. [#cp1616] Comunication procesor CP1616 
+(http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
-.. [#siemens_sup] Development Kit DK-16xx PN IO http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx
+.. [#siemens_sup] Development Kit DK-16xx PN IO 
+(http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
 
 Copyright
 ========
