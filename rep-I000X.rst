@@ -49,6 +49,18 @@ Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a P
 
 From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 through the standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
+CP1616 covers all three methods of exchanging data in PROFINET network:
+
+- **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
+
+- **Cyclic non-isochronous real-time IO data traffic (RT):** TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
+
+- **Cyclic isochronous real-time IO data traffic (IRT):** signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
+
+All three methods can be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
+
+.. image:: rep-I000X/IO_cycle.jpg
+
 
 Linux SW for CP1616
 ========
@@ -78,19 +90,8 @@ IO Base Library
 
 IO-Base user programming interface provides all basic functions that a **C/C++** user program requires to communicate with PROFINET IO devices. Library utilizes existing device files for   read/write IO data, send/receive alarms confirmations and read/write data records.
 
-The IO-Base library also covers all three methods of exchanging data in PROFINET network:
-
-- **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
-
-- **Cyclic non-isochronous real-time IO data traffic (RT):** TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
-
-- **Cyclic isochronous real-time IO data traffic (IRT):** signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
-
-All three methods can be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
-
-.. image:: rep-I000X/IO_cycle.jpg
-
 Original IO Base API including programming examples is available here [#io_base_doc]_.
+
 
 Linux kernel & RTAI
 =========
