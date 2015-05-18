@@ -38,7 +38,7 @@ We would like to address following two scenarios in particular:
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
-The goal of this project is therefore to develop a ROS-Profinet-wrapper on the top of IO base library for Siemens CP1616 [#cp1616]_, in order to provide guidelines and background for usage of this progressive hardware interface by ROS-Industrial community.
+The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide guidelines and background for usage of this progressive hardware interface by ROS-Industrial community.
 
 CP1616
 ========
