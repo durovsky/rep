@@ -29,8 +29,15 @@ ToDo
 Motivation
 ========
 
-Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. The goal of this project is therefore to develop a ROS-Profinet-wrapper for communication processor Siemens CP1616 [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community. We consider Profinet in combination with existing PCI compatible communication processors a viable way how to allow ROS-I systems to communicate with PLC's, HMIs, OPC servers and various industrial hardware. 
+Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
+Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided to experiment with Profinet, since we consider integration of this standard a viable way how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
+
+We would like to address following two scenarios in particular: 
+- Integration of ROS-I system into existing industrial network (PLC as a master)
+- Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
+
+The goal of this project is therefore to develop a ROS-Profinet-wrapper for communication module Siemens CP1616. [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community.
 
 CP1616
 ========
@@ -39,15 +46,14 @@ Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a P
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device. STEP7 or Simatic NCM tools are are required for basic parametrization, topology setup and configuration download through standard Ethernet. User's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
-
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup. Configuration is download to CP1616 through standard Ethernet and user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 
 Existing Linux SW for CP1616
 ========
-DK-16xx PN IO is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. CP1616 driver and user IO Base library sources for Linux systems, as well as comprehensive documentation for porting to other OS is included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly.  
+DK-16xx PN IO is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS is included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly.  
 
-The following graphic shows the software layers and communictation paths of DK-16xx PN IO software
+The following graphic shows the software layers and communictation paths between CP1616 firmware, driver and IO base library
 
 .. image:: rep-I000X/overview.jpg
 
@@ -81,22 +87,22 @@ The IO-Base library covers all three methods of exchanging data in PROFINET netw
 
 - Cyclic isochronous real-time IO data traffic (IRT): signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
 
-All three methods can be used simultaneously. Bandwidth sharing ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported as shown in following schematic. 
+All three methods can be used simultaneously. Bandwidth sharing ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
 .. image:: rep-I000X/IO_cycle.jpg
 
-Original IO Base documentation with API is available here [#io_base_doc]_.
+Original IO Base API including programming examples is available here [#io_base_doc]_.
 
-Real-time requirements
+Linux & real-time 
 =========
-- Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. 
-- In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
+In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
 
-Testing OS setup 
----------
+Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. For use with Ubuntu 12.04 and ROS Hydro following combination of Linux kernels was tested: 
 
-Standard OS:  Ubuntu 12.04 with Kernel 3.11.0.26
+Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26 
 Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
+
+Linux Kernel 3.5.7 + RTai extension installation guide is available here: TODO
 
 
 Requirements
@@ -108,6 +114,7 @@ References
 ========
 .. [#ros-i_roadmap] ROS-Industrial Roadmap (https://github.com/ros-industrial-consortium/roadmapping/blob/master/RoadmappingDocument.md)
 .. [#ros_canopen] ros_canopen library from IPA (http://wiki.ros.org/ros_canopen) 
+.. [#fieldbus_wiki] Fieldbus overview (http://en.wikipedia.org/wiki/Fieldbus)
 .. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
 .. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
