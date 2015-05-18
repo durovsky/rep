@@ -32,7 +32,7 @@ Motivation
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering *ros_canopen* package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Fieldbus technology has been commonly used in manufacturing processes for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since we consider integration of this standard as a one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
+Fieldbus technology has been commonly used in manufacturing processes for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since we consider integration of this standard one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 In addition to interfacing peripherals we would like to address following two scenarios in particular: 
 
@@ -54,9 +54,9 @@ CP1616 covers all three methods of exchanging data in PROFINET network:
 
 - **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems. with reaction times in the range of 100ms.
 
-- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction up to 10ms cycle times. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements applications.
+- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction up to 10ms cycle times. This represents a software-based solution for typical I/O applications.
 
-- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for demanding drive systems applications with cycle rates less than 1ms.  
+- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for demanding drive systems with cycle rates less than 1ms.  
 
 All three methods might be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
@@ -84,7 +84,7 @@ The following schematic shows the basic driver structure. The arrows indicate co
 
 .. image:: rep-I000X/driver.jpg
 
-Please refer to original documentation for additional details [#CP1616_doc]_ .
+Additional details are available in original documentation [#CP1616_doc]_ .
 
 IO Base Library
 ---------
