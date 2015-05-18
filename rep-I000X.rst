@@ -14,7 +14,7 @@ Outline
 #. Motivation_
 #. CP1616_
 #. `Linux SW for CP1616`_
-#. `Linux & real-time`_ 
+#. `Linux kernel & RTAI`_ 
 #. Requirements_
 #. References_
 #. Copyright_
@@ -67,7 +67,7 @@ The driver is used to activate the CP1616 and to integrate the memory windows an
 - maps the process image on the CP for the IO Base library
 - handles jobs between the IO Base library and the firmware on the CP
  
-The following schematic shows the basic driver structure. The arrows indicate communications channels - ring buffers used for data exchange between driver and CP1616 firmware. The boxes above represent the device files (/dev) - driver access points for communication with user application.
+The following schematic shows the basic driver structure. The arrows indicate communications channels - ring buffers used for data exchange between driver and CP1616 firmware. The boxes above represent the device files **(/dev)** - driver access points for communication with user application.
 
 .. image:: rep-I000X/driver.jpg
 
@@ -94,15 +94,18 @@ All three methods can be used simultaneously. Bandwidth sharing as shown in foll
 
 Original IO Base API including programming examples is available here [#io_base_doc]_.
 
-Linux & real-time 
+Linux kernel & RTAI
 =========
-In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. For use with Ubuntu 12.04 and ROS Hydro, we recommend following combination of Linux kernels: 
+Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases compatible with ROS Hydro or Indigo and compilation and installation of *< 3.8 kernel* is required.    
 
-Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
-Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
+Moreover, as mentioned in original driver documentation [#CP1616_doc]_ in order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
+ 
+Until release of new driver version, we recommend following PC setup:
+ 
+- Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
+- Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
 
-Linux Kernel 3.5.7 + RTai extension installation guide is available here: TODO
-
+Installation guide for Linux Kernel 3.5.7 + RTAI extension is available here: TODO
 
 Requirements
 =========
