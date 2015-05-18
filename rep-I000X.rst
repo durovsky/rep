@@ -24,7 +24,7 @@ Outline
 Abstract
 ========
 
-This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Description of communication possibilities of Siemens CP1616, Linux drivers, recommended OS setup as well as requirements and design assumptions are included. The goal of this package is to provide access to PROFINET network through ROS messages, services and actions.  
+This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about Siemens CP1616, Linux drivers, recommended Linux setup as well as requirements and design assumptions are included. The goal of ROS-PROFINET wrapper is to provide access to PROFINET network through ROS messages, services and actions.  
 
 
 Motivation
