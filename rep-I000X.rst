@@ -13,8 +13,8 @@ Outline
 #. Abstract_
 #. Motivation_
 #. CP1616_
-#. `Existing Linux SW for CP1616`_
-#. `Real-time requirements`_ 
+#. `Linux SW for CP1616`_
+#. `Linux & real-time`_ 
 #. Requirements_
 #. References_
 #. Copyright_
@@ -92,11 +92,9 @@ Original IO Base API including programming examples is available here [#io_base_
 
 Linux & real-time 
 =========
-In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. 
+In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. For use with Ubuntu 12.04 and ROS Hydro, we recommend following combination of Linux kernels: 
 
-Current version of DK-16xx PN IO - V2.6 works only with Linux kernels older than 3.8. For use with Ubuntu 12.04 and ROS Hydro following combination of Linux kernels was tested: 
-
-Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26 
+Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
 Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
 
 Linux Kernel 3.5.7 + RTai extension installation guide is available here: TODO
