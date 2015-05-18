@@ -62,7 +62,7 @@ The following graphic shows the software layers and communictation paths between
 Driver
 ---------
 
-The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It 
+The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It: 
 
  - processes interupts
  - maps the process image on the CP for the IO Base library
