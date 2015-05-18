@@ -34,8 +34,8 @@ Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roa
 Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided to experiment with Profinet, since we consider integration of this standard a viable way how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 We would like to address following two scenarios in particular 
- - Integration of ROS-I system into existing industrial network (PLC as a master)
- - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
+  - Integration of ROS-I system into existing industrial network (PLC as a master)
+  - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
 The goal of this project is therefore to develop a ROS-Profinet-wrapper for communication module Siemens CP1616. [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community.
 
@@ -46,7 +46,7 @@ Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a P
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup and configuration is downloaded to CP1616 through standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup while configuration is downloaded to CP1616 through standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 
 Linux SW for CP1616
@@ -60,10 +60,10 @@ DK-16xx PN IO [#dk16xx]_ is a software developemnt kit for integration of CP1616
 Driver
 ---------
 
-The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It  
- - processes interupts
- - maps the process image on the CP for the IO Base library
- - handles jobs between the IO Base library and the firmware on the CP
+The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It:  
+  - processes interupts
+  - maps the process image on the CP for the IO Base library
+  - handles jobs between the IO Base library and the firmware on the CP
  
 The following schematic shows the basic driver structure. The arrows indicate communications channels - ring buffers used for data exchange between driver and CP1616 firmware. The boxes above represent the device files (/dev) - driver access points for communication with user application.
 
@@ -113,7 +113,7 @@ References
 .. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
 .. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
-.. [dk16xx] DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
+.. [#dk16xx] DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
 .. [#CP1616_doc] PGH_DK-16xx_76 (https://support.industry.siemens.com/cs/document/26436652?lc=en-SA)
 .. [#io_base_doc] PGH_IO-Base_76 (https://support.industry.siemens.com/cs/document/19779901?dti=0&lc=en-CZ)
 .. [#rtai] RTAI (https://www.rtai.org/)
