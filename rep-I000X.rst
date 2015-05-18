@@ -42,7 +42,7 @@ The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siem
 
 CP1616
 ========
-Siemens CP1616 [#cp1616]_ is a communications module that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), usage in various network configurations is possible. 
+Siemens CP1616 [#cp1616]_ is a communications module that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
@@ -53,9 +53,9 @@ CP1616 covers all three methods of exchanging data in PROFINET network:
 
 - **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems. with reaction times in the range of 100ms.
 
-- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction times up to 10ms cycle times. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
+- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction up to 10ms cycle times. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
 
-- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for applications in drive systems with cycle rates less than 1ms are possible. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
+- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for applications in drive systems with cycle rates less than 1ms are possible. 
 
 All three methods can be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
@@ -64,7 +64,7 @@ All three methods can be used simultaneously. Bandwidth sharing as shown in foll
 
 Linux SW for CP1616
 ========
-**DK-16xx PN IO** [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between **CP1616 firmware, Driver IO base library and User program**. 
+**DK-16xx PN IO** [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between **CP1616 firmware, Driver, IO base library and User program**. 
 
 .. image:: rep-I000X/overview.jpg
 
@@ -89,6 +89,8 @@ IO Base Library
 ---------
 
 IO-Base user programming interface provides all basic functions that a **C/C++** user program requires to communicate with PROFINET IO devices. Library utilizes existing device files for   read/write IO data, send/receive alarms confirmations and read/write data records.
+
+.. image:: rep-I000X/io_base.jpg
 
 Original IO Base API including programming examples is available here [#io_base_doc]_.
 
