@@ -35,8 +35,8 @@ Filedbus technology has been commonly used in manufacturing processes for more t
 
 We would like to address following two scenarios in particular: 
 
-  - Integration of ROS-I system into existing industrial network (PLC as a master)
-  - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
+ - Integration of ROS-I system into existing industrial network (PLC as a master)
+ - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
 The goal of this project is therefore to develop a ROS-Profinet-wrapper on the top of IO base library for Siemens CP1616 [#cp1616]_, in order to provide guidelines and background for usage of this progressive hardware interface by ROS-Industrial community.
 
@@ -63,9 +63,9 @@ Driver
 
 The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It:  
 
-  - processes interupts
-  - maps the process image on the CP for the IO Base library
-  - handles jobs between the IO Base library and the firmware on the CP
+ - processes interupts
+ - maps the process image on the CP for the IO Base library
+ - handles jobs between the IO Base library and the firmware on the CP
  
 The following schematic shows the basic driver structure. The arrows indicate communications channels - ring buffers used for data exchange between driver and CP1616 firmware. The boxes above represent the device files (/dev) - driver access points for communication with user application.
 
