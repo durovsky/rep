@@ -32,14 +32,14 @@ Motivation
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering *ros_canopen* package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since we consider integration of this standard a one of the possible ways how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
+Fieldbus technology has been commonly used in manufacturing processes for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since we consider integration of this standard as a one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 In addition to interfacing peripherals we would like to address following two scenarios in particular: 
 
 - Integration of ROS-I system into existing industrial network (PLC as a master)
-- Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
+- Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide guidelines and software background for usage of this progressive hardware interface by ROS-Industrial community.
+The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide software background and guidelines for usage of this progressive hardware interface by ROS-Industrial community.
 
 CP1616
 ========
@@ -48,24 +48,24 @@ Siemens CP1616 [#cp1616]_ is a communications module that enables PGs/PCs equipp
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 over the standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 over the standard Ethernet. Afterwards, user's Linux (or other OS) application addresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 CP1616 covers all three methods of exchanging data in PROFINET network:
 
 - **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems. with reaction times in the range of 100ms.
 
-- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction up to 10ms cycle times. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
+- **Cyclic non-isochronous real-time IO data traffic (RT):** Real time protocol with reaction up to 10ms cycle times. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements applications.
 
-- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for applications in drive systems with cycle rates less than 1ms are possible. 
+- **Cyclic isochronous real-time IO data traffic (IRT):** Isochronous real-time protocol for demanding drive systems applications with cycle rates less than 1ms.  
 
-All three methods can be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
+All three methods might be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
 .. image:: rep-I000X/IO_cycle.jpg
 
 
 Linux SW for CP1616
 ========
-**DK-16xx PN IO** [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between **CP1616 firmware, Driver, IO base library and User program**. 
+**DK-16xx PN IO** [#dk16xx]_ is a software developement kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communication paths among **CP1616 firmware, Driver, IO base library and User program**. 
 
 .. image:: rep-I000X/overview.jpg
 
@@ -78,7 +78,7 @@ The driver is used to activate the CP1616 and to integrate the memory windows an
 
 - processes interupts
 - maps the process image on the CP for the IO Base library
-- handles jobs between the IO Base library and the firmware on the CP
+- handles jobs between the IO Base library and CP firmware 
  
 The following schematic shows the basic driver structure. The arrows indicate communications channels - ring buffers used for data exchange between driver and CP1616 firmware. The boxes above represent the device files **(/dev)** - driver access points for communication with user application.
 
@@ -100,9 +100,9 @@ Linux kernel & RTAI
 =========
 Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases compatible with ROS Hydro or Indigo and until release of new driver version, compilation and installation of *< 3.8 kernel* is required.    
 
-In addition, as mentioned in original driver documentation [#CP1616_doc]_, in order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
+In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
  
-Due to described restrictions for DK16xx v`lv2.6 following PC setup that is recomended: 
+With respect to enumerated limitations, if using DK-16xx PN IO v2.6. following PC setup is recommended: 
  
 - Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
 - Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
