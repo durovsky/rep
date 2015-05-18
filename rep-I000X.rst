@@ -33,7 +33,7 @@ Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roa
 
 Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided to experiment with Profinet, since we consider integration of this standard a viable way how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
 
-We would like to address following two scenarios in particular: 
+We would like to address following two scenarios in particular 
  - Integration of ROS-I system into existing industrial network (PLC as a master)
  - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
@@ -46,14 +46,12 @@ Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a P
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup and configuration is downloaded to CP1616 through standard Ethernet. Afterwards user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup and configuration is downloaded to CP1616 through standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 
-Existing Linux SW for CP1616
+Linux SW for CP1616
 ========
-DK-16xx PN IO [dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS is included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly.  
-
-The following graphic shows the software layers and communictation paths between CP1616 firmware, driver and IO base library
+DK-16xx PN IO [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS is included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between CP1616 firmware, driver and IO base library
 
 .. image:: rep-I000X/overview.jpg
 
@@ -62,7 +60,7 @@ The following graphic shows the software layers and communictation paths between
 Driver
 ---------
 
-The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It: 
+The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It  
  - processes interupts
  - maps the process image on the CP for the IO Base library
  - handles jobs between the IO Base library and the firmware on the CP
