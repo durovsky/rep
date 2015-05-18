@@ -98,9 +98,9 @@ Linux kernel & RTAI
 =========
 Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases compatible with ROS Hydro or Indigo and compilation and installation of *< 3.8 kernel* is required.    
 
-Moreover, as mentioned in original driver documentation [#CP1616_doc]_ in order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
+In addition, as mentioned in original driver documentation [#CP1616_doc]_ in order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
  
-Until release of new driver version, we recommend following PC setup:
+Described restrictions leads to following PC setup that is recomended until release of new driver version:
  
 - Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
 - Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
