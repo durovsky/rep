@@ -33,12 +33,12 @@ Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roa
 
 Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for Profinet, since we consider integration of this standard a one of the possible ways how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
 
-We would like to address following two scenarios in particular: 
+In addition to basic communication options we would like to address following two scenarios in particular: 
 
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
-The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide guidelines and background for usage of this progressive hardware interface by ROS-Industrial community.
+The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide guidelines and software background for usage of this progressive hardware interface by ROS-Industrial community.
 
 CP1616
 ========
@@ -47,12 +47,12 @@ Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a P
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup while configuration is downloaded to CP1616 through standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 through the standard Ethernet. Afterwards, user's Linux (or other OS) application adresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 
 Linux SW for CP1616
 ========
-DK-16xx PN IO [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS is included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between CP1616 firmware, driver and IO base library
+DK-16xx PN IO [#dk16xx]_ is a software developemnt kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communictation paths between CP1616 firmware, Driver IO base library and User program. 
 
 .. image:: rep-I000X/overview.jpg
 
@@ -76,15 +76,15 @@ Please refer to original documentation for additional details [#CP1616_doc]_ .
 IO Base Library
 ---------
 
-IO-Base user programming interface provides all basic functions that a C user program requires to communicate with PROFINET IO devices. These are read/write IO data, send/receive alarms confirmations and read/write data records. 
+IO-Base user programming interface provides all basic functions that a C/C++ user program requires to communicate with PROFINET IO devices. These are read/write IO data, send/receive alarms confirmations and read/write data records. 
 
 The IO-Base library covers all three methods of exchanging data in PROFINET network:
 
-- Acyclic IO data exchange (NRT): used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
+- **Acyclic IO data exchange (NRT):** used for non-deterministic functions such as parametrization, video/audio transmissions and data transfer to higher level IT systems.
 
-- Cyclic non-isochronous real-time IO data traffic (RT): TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
+- **Cyclic non-isochronous real-time IO data traffic (RT):** TCP/IP layers are bypassed in order to give deterministic performance for automation applications in the 1-10mS range. This represents a software-based solution for typical I/O applications, inluding motion control and high performance requirements.
 
-- Cyclic isochronous real-time IO data traffic (IRT): signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
+- **Cyclic isochronous real-time IO data traffic (IRT):** signal prioritization and scheduled switching deliver high precision synchronization for applications such as motion control. Cycle rates in the sub millisecond range are possible, with jitter in sub-microsecond range. This service requires hardware support in the form of readily available ASICs (Application specific integrated circuit). 
 
 All three methods can be used simultaneously. Bandwidth sharing ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
