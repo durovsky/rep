@@ -31,17 +31,18 @@ Motivation
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering canopen package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided to experiment with Profinet, since we consider integration of this standard a viable way how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
+Filedbus technology has been commonly used in manufacturing processes for more than 25 years and there is a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for Profinet, since we consider integration of this standard a one of the possible ways how to allow ROS-I systems to comunicate with PCL's HMI's, OPCs and various industrial hardware.  
 
-We would like to address following two scenarios in particular 
+We would like to address following two scenarios in particular: 
+
   - Integration of ROS-I system into existing industrial network (PLC as a master)
   - Using ROS-I system as a high level system for industrially driven mechanics (PC as a master)
 
-The goal of this project is therefore to develop a ROS-Profinet-wrapper for communication module Siemens CP1616. [#cp1616]_, in order to provide this progressive hardware interface to ROS-Industrial community.
+The goal of this project is therefore to develop a ROS-Profinet-wrapper on the top of IO base library for Siemens CP1616 [#cp1616]_, in order to provide guidelines and background for usage of this progressive hardware interface by ROS-Industrial community.
 
 CP1616
 ========
-Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a PCI slot to be connected to PROFINET IO. Since module offers the communication possibilities of both IO Controllers/IO Devices (master/slave), usage in various network configurations is possible. 
+Communication module Siemens CP1616 [#cp1616]_ enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both IO Controllers/IO Devices (master/slave), usage in various network configurations is possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
@@ -61,6 +62,7 @@ Driver
 ---------
 
 The driver is used to activate the CP1616 and to integrate the memory windows and IRQs of the CP1616 in the operating system. It:  
+
   - processes interupts
   - maps the process image on the CP for the IO Base library
   - handles jobs between the IO Base library and the firmware on the CP
@@ -69,7 +71,7 @@ The following schematic shows the basic driver structure. The arrows indicate co
 
 .. image:: rep-I000X/driver.jpg
 
-For additional driver details please refer to original documentation [#CP1616_doc]_ .
+Please refer to original documentation for additional details [#CP1616_doc]_ .
 
 IO Base Library
 ---------
