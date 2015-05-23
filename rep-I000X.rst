@@ -38,7 +38,7 @@ In addition to interfacing peripherals we would like to address following two sc
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET network through ROS messages, services and actions. Originally ROS-PROFINET wrapper is developed in combination with Siemens CP1616, but with a little software adoption it should be possible for use with other Linux compatible PROFINET products as well.  
+The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET network through ROS messages, services and actions. 
 
 Software Layers
 ========
@@ -56,7 +56,7 @@ ToDo
 
 CP1616
 ========
-Siemens CP1616 [#cp1616]_ is a communications module that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
+ROS-PROFINET wrapper is originally developed for use with Siemens CP1616 [#cp1616]_. which enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
@@ -74,21 +74,6 @@ CP1616 covers all three methods of exchanging data in PROFINET network:
 All three methods might be used simultaneously. Bandwidth sharing as shown in following figure ensures that at least 50% of every IO cycle remains available for TCP/IP communications, whatever other functionality is being supported: 
 
 .. image:: rep-I000X/IO_cycle.jpg
-
-Linux kernel & RTAI
----------
-
-Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is required.    
-
-In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
- 
-With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend following PC setup: 
- 
-- Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
-- Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
-
-Installation guide for Linux Kernel 3.5.7 + RTAI extension is available here: TODO
-
 
 Linux SW for CP1616
 ---------
@@ -121,7 +106,19 @@ IO-Base user programming interface provides all basic functions that a **C/C++**
 
 Original IO Base API including programming examples is available here [#io_base_doc]_.
 
+Linux kernel & RTAI
+---------
 
+Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is required.    
+
+In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
+ 
+With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend following PC setup: 
+ 
+- Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
+- Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
+
+Installation guide for Linux Kernel 3.5.7 + RTAI extension is available here: TODO
 
 
 
