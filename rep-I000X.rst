@@ -12,6 +12,7 @@ Outline
 
 #. Abstract_
 #. Motivation_
+#. `Software Layers`_ 
 #. CP1616_
 #. `Linux SW for CP1616`_
 #. `Linux kernel & RTAI`_ 
@@ -24,22 +25,27 @@ Outline
 Abstract
 ========
 
-This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about Siemens CP1616, Linux drivers, recommended Linux setup as well as requirements and design assumptions are included. The goal of ROS-PROFINET wrapper is to provide access to PROFINET network through ROS messages, services and actions.  
-
+This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about software layer architecture, Linux real-time extension, development requirements and design assumptions are included. 
 
 Motivation
 ========
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering *ros_canopen* package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Fieldbus technology has been commonly used in manufacturing processes for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since we consider integration of this standard one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
+Mapping worldwide production system interfaces, Fieldbus technology has been commonly used for more than 25 years with a wide variety of competing standards on the market[#fieldbus_wiki]_ .Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 In addition to interfacing peripherals we would like to address following two scenarios in particular: 
 
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-The goal of this project is therefore to develop a ROS-Profinet-wrapper for Siemens CP1616 [#cp1616]_, to provide software background and guidelines for usage of this progressive hardware interface by ROS-Industrial community.
+The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET network through ROS messages, services and actions. Originally ROS-PROFINET wrapper is developed in combination with Siemens CP1616, but with a little software adoption it should be possible for use with other Linux compatible PROFINET products as well.  
+
+Software Layers
+========
+
+.. image:: rep-I000X/architecture.jpg
+
 
 CP1616
 ========
@@ -102,7 +108,7 @@ Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older th
 
 In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
  
-With respect to enumerated limitations, if using DK-16xx PN IO v2.6. following PC setup is recommended: 
+With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend following PC setup: 
  
 - Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
 - Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
