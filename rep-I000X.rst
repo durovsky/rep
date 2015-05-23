@@ -44,7 +44,11 @@ The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET
 Software Layers
 ========
 
+Since there is no universal Socketcan package for Profinet, following architecture was designed in order to make wrapper usable with various Profinet components:
+
 .. image:: rep-I000X/sw_layers.jpg
+
+ROS-PROFINET abstraction layer declares functions required for accessing common Profinet components with ROS layer implementation through messages and services, while particular hardware specific code is hidden in interface layer.  
 
 
 CP1616
