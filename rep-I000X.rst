@@ -13,11 +13,10 @@ Outline
 #. Abstract_
 #. Motivation_
 #. `Software Layers`_ 
-#. CP1616_
-#. `Linux SW for CP1616`_
-#. `Linux kernel & RTAI`_ 
-#. Requirements_
 #. `Design Assumptions`_
+#. CP1616_
+
+
 #. References_
 #. Copyright_
 
@@ -25,14 +24,14 @@ Outline
 Abstract
 ========
 
-This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about software layer architecture, Linux real-time extension, development requirements and design assumptions are included. 
+This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about motivation, software layer architecture, development requirements, design assumptions as well as details about Linux real-time extension are included. 
 
 Motivation
 ========
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering *ros_canopen* package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Mapping worldwide production system interfaces, Fieldbus technology has been commonly used for more than 25 years with a wide variety of competing standards on the market[#fieldbus_wiki]_ .Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
+Mapping worldwide production system interfaces, Fieldbus technology which has been commonly used for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_ is definitely current leader. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 In addition to interfacing peripherals we would like to address following two scenarios in particular: 
 
@@ -44,12 +43,16 @@ The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET
 Software Layers
 ========
 
-Since there is no universal Socketcan package for Profinet, following architecture was designed in order to make wrapper usable with various Profinet components:
+Since there is no universal *Socketcan package* for Profinet, following architecture was designed in order to make wrapper usable with various Profinet components:
 
 .. image:: rep-I000X/sw_layers.jpg
 
-ROS-PROFINET abstraction layer declares functions required for accessing common Profinet components with ROS layer implementation through messages and services, while particular hardware specific code is hidden in interface layer.  
+ROS-PROFINET abstraction layer declares functions required for accessing common PROFINET components with ROS layer implementation through messages and services, while particular hardware specific code is hidden in interface layer.  
 
+
+Design Assumptions
+=========
+ToDo
 
 CP1616
 ========
@@ -72,14 +75,26 @@ All three methods might be used simultaneously. Bandwidth sharing as shown in fo
 
 .. image:: rep-I000X/IO_cycle.jpg
 
+Linux kernel & RTAI
+---------
+
+Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is required.    
+
+In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
+ 
+With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend following PC setup: 
+ 
+- Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
+- Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
+
+Installation guide for Linux Kernel 3.5.7 + RTAI extension is available here: TODO
+
 
 Linux SW for CP1616
-========
+---------
 **DK-16xx PN IO** [#dk16xx]_ is a software developement kit for integration of CP1616 module into various PCs  equipped by standard PCI slot. Linux CP1616 driver and user IO Base library sources as well as comprehensive documentation for porting to other OS are included. The kit is free of charge, it can be downloaded from Siemens support website [#siemens_sup]_ or ordered directly. The following graphic shows the software layers and communication paths among **CP1616 firmware, Driver, IO base library and User program**. 
 
 .. image:: rep-I000X/overview.jpg
-
-
 
 Driver
 ---------
@@ -96,6 +111,7 @@ The following schematic shows the basic driver structure. The arrows indicate co
 
 Additional details are available in original documentation [#CP1616_doc]_ .
 
+
 IO Base Library
 ---------
 
@@ -106,26 +122,9 @@ IO-Base user programming interface provides all basic functions that a **C/C++**
 Original IO Base API including programming examples is available here [#io_base_doc]_.
 
 
-Linux kernel & RTAI
-=========
-Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is required.    
 
-In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
- 
-With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend following PC setup: 
- 
-- Standard OS:  Up to date Ubuntu 12.04 with Kernel 3.11.0.26
-- Real-time OS: Ubuntu 12.04 with Kernel 3.5.7 + RTai 4.0
 
-Installation guide for Linux Kernel 3.5.7 + RTAI extension is available here: TODO
 
-Requirements
-=========
-ToDo
-
-Design Assumptions
-=========
-ToDo
 
 
 References
