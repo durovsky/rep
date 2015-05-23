@@ -31,14 +31,14 @@ Motivation
 
 Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roadmap]_, however if not considering *ros_canopen* package from IPA [#ros_canopen]_, there hasn't been any obvious progress in this field for quite a long time now. 
 
-Mapping worldwide production system interfaces, Fieldbus technology which has been commonly used for more than 25 years with a wide variety of competing standards on the market [#fieldbus_wiki]_ is definitely current leader. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
+Mapping worldwide production system interfaces, fieldbus technology is definitelly the most progressive one. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided for **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
 In addition to interfacing peripherals we would like to address following two scenarios in particular: 
 
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET network through ROS messages, services and actions. 
+The main goal of ROS-PROFINET wrapper is to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
 
 Software Layers
 ========
@@ -47,7 +47,7 @@ Since there is no universal *Socketcan package* for Profinet, following architec
 
 .. image:: rep-I000X/sw_layers.jpg
 
-ROS-PROFINET abstraction layer declares functions required for accessing common PROFINET components as well as ROS layer implementation through messages, services and actions. Particular hardware specific code is hidden in interface layer.  
+ROS-PROFINET abstraction layer declares functions required for accessing PROFINET components as well as ROS layer implementation through messages, services and actions while particular hardware specific code is hidden in interface layer.  
 
 
 Design Assumptions
@@ -56,7 +56,7 @@ ToDo
 
 CP1616
 ========
-ROS-PROFINET wrapper is originally developed for use with Siemens CP1616 [#cp1616]_, which is a communication module, that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
+ROS-PROFINET wrapper was originally developed for use with Siemens CP1616 [#cp1616]_, which is a communication module, that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
@@ -128,7 +128,6 @@ References
 ========
 .. [#ros-i_roadmap] ROS-Industrial Roadmap (https://github.com/ros-industrial-consortium/roadmapping/blob/master/RoadmappingDocument.md)
 .. [#ros_canopen] ros_canopen library from IPA (http://wiki.ros.org/ros_canopen) 
-.. [#fieldbus_wiki] Fieldbus overview (http://en.wikipedia.org/wiki/Fieldbus)
 .. [#cp1616] Comunication procesor CP1616 (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/cp1616/pages/cp1616.aspx)
 .. [#profinet] Profinet What & Why (http://us.profinet.com/technology/profinet/)
 .. [#siemens_sup] Development Kit DK-16xx PN IO (http://w3.siemens.com/mcms/industrial-communication/en/ie/system-interfacing/system-interfacing-pg-pc/development-kit-dk16xx/Pages/Default.aspx)
