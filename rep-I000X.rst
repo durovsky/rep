@@ -47,7 +47,7 @@ Since there is no universal *Socketcan package* for Profinet, following architec
 
 .. image:: rep-I000X/sw_layers.jpg
 
-ROS-PROFINET abstraction layer declares functions required for accessing common PROFINET components with ROS layer implementation through messages and services, while particular hardware specific code is hidden in interface layer.  
+ROS-PROFINET abstraction layer declares functions required for accessing common PROFINET components as well as ROS layer implementation through messages, services and actions. Particular hardware specific code is hidden in interface layer.  
 
 
 Design Assumptions
@@ -56,7 +56,7 @@ ToDo
 
 CP1616
 ========
-ROS-PROFINET wrapper is originally developed for use with Siemens CP1616 [#cp1616]_. which enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
+ROS-PROFINET wrapper is originally developed for use with Siemens CP1616 [#cp1616]_, which is a communication module, that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
