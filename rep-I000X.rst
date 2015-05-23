@@ -43,7 +43,7 @@ The main goal of ROS-PROFINET wrapper is to provide access to PROFINET network t
 Software Layers
 ========
 
-Since there is no universal *Socketcan package* for PROFINET, following architecture was designed in order to make wrapper usable with various Profinet components:
+Since there is no universal *Socketcan package* for PROFINET, following architecture was designed in order to make wrapper usable with various components:
 
 .. image:: rep-I000X/sw_layers.jpg
 
