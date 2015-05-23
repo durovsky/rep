@@ -44,7 +44,7 @@ The main goal of ROS-PROFINET wrapper is therefore to provide access to PROFINET
 Software Layers
 ========
 
-.. image:: rep-I000X/architecture.jpg
+.. image:: rep-I000X/sw_layers.jpg
 
 
 CP1616
