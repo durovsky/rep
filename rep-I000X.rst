@@ -38,13 +38,13 @@ In addition to interfacing peripherals we would like to address following two sc
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-**Main goal** of ROS-PROFINET wrapper - to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
+**Main goal of ROS-PROFINET wrapper** - to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
 
 **GSoC project goal**
-- define ROS-PROFINET abstraction layer 
-- develop cp1616_interface package
-- demonstrate the functionality in combination with PLC S7-1200 and HMI
-- write a proper documentation
+ - define ROS-PROFINET abstraction layer 
+ - develop cp1616_interface package
+ - demonstrate the functionality in combination with PLC S7-1200 and HMI
+ - write a proper documentation
 
 Software Layers
 ========
