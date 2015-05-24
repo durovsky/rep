@@ -144,8 +144,8 @@ References
 .. [#CP1616_doc] PGH_DK-16xx_76 (https://support.industry.siemens.com/cs/document/26436652?lc=en-SA)
 .. [#io_base_doc] PGH_IO-Base_76 (https://support.industry.siemens.com/cs/document/19779901?dti=0&lc=en-CZ)
 .. [#rtai] RTAI (https://www.rtai.org/)
-.. [#pkg1]_ ros_profinet_experimental (https://github.com/ros-industrial/ros_profinet_experimental.git)
-.. [#pkg2]_ siemens_experimental (https://github.com/ros-industrial/siemens_experimental.git)
+.. [#pkg1] ros_profinet_experimental (https://github.com/ros-industrial/ros_profinet_experimental.git)
+.. [#pkg2] siemens_experimental (https://github.com/ros-industrial/siemens_experimental.git)
 
 Copyright
 ========
