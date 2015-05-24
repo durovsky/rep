@@ -15,8 +15,7 @@ Outline
 #. `Software Layers`_ 
 #. `Design Assumptions`_
 #. CP1616_
-
-
+#. `Related packages`
 #. References_
 #. Copyright_
 
@@ -41,10 +40,11 @@ In addition to interfacing peripherals we would like to address following two sc
 **Main goal** - to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
 
 **GSoC project goals**
- - define ROS-PROFINET abstraction layer 
- - develop *cp1616_interface* package
- - demonstrate the functionality in combination with PLC S7-1200 and HMI
- - write a proper documentation
+
+- define ROS-PROFINET abstraction layer 
+- develop *cp1616_interface* package
+- demonstrate the functionality in combination with PLC S7-1200 and HMI
+- write a proper documentation
 
 Software Layers
 ========
@@ -127,8 +127,10 @@ With respect to enumerated limitations, for DK-16xx PN IO v2.6. we recommend fol
 Guide for installing Linux Kernel 3.5.7 + RTAI extension is available here: TODO
 
 
-
-
+Related packages
+========
+[#pkg1]_ **ros_profinet_experimental** - ROS-PROFINET abstraction layer
+[#pkg2]_ **siemens_experimental** - cp1616_interface, original Siemens SW - DK-16xx PN IO, STEP7 tutorial project 
 
 References
 ========
@@ -141,6 +143,8 @@ References
 .. [#CP1616_doc] PGH_DK-16xx_76 (https://support.industry.siemens.com/cs/document/26436652?lc=en-SA)
 .. [#io_base_doc] PGH_IO-Base_76 (https://support.industry.siemens.com/cs/document/19779901?dti=0&lc=en-CZ)
 .. [#rtai] RTAI (https://www.rtai.org/)
+.. [#pkg1]_ ros_profinet_experimental (https://github.com/ros-industrial/ros_profinet_experimental.git)
+.. [#pkg2]_ siemens_experimental (https://github.com/ros-industrial/siemens_experimental.git)
 
 Copyright
 ========
