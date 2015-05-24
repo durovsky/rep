@@ -130,8 +130,8 @@ Guide for installing Linux Kernel 3.5.7 + RTAI extension is available here: TODO
 Related packages
 ========
 
--  **ros_profinet_experimental** - [#pkg1]_ ROS-PROFINET abstraction layer 
--  **siemens_experimental** - [#pkg2]_ *cp1616_interface*, original Siemens SW - DK-16xx PN IO, STEP7 tutorial project 
+- [#pkg1]_ **ros_profinet_experimental** -  ROS-PROFINET abstraction layer 
+- [#pkg2]_ **siemens_experimental** -  *cp1616_interface*, original Siemens SW - DK-16xx PN IO, STEP7 tutorial project 
 
 References
 ========
