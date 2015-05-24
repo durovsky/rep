@@ -24,7 +24,7 @@ Outline
 Abstract
 ========
 
-This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about motivation, software layer architecture, development requirements, design assumptions as well as details about Linux real-time extension are included. 
+This REP describes the draft version of ROS-PROFINET wrapper. It is relevant to anyone using ROS-Industrial system in which PROFINET communication is required. Essential information about motivation, software layer architecture, design assumptions as well as details about Siemens CP1616 and Linux real-time extension are included. 
 
 Motivation
 ========
@@ -38,7 +38,13 @@ In addition to interfacing peripherals we would like to address following two sc
 - Integration of ROS-I system into existing industrial network (PLC as a master)
 - Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
-The main goal of ROS-PROFINET wrapper is to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
+**Main goal** of ROS-PROFINET wrapper - to provide access to PROFINET network through ROS messages, services and actions, utilizing existing Linux compatible Profinet hardware. 
+
+**GSoC project goal**
+- define ROS-PROFINET abstraction layer 
+- develop cp1616_interface package
+- demonstrate the functionality in combination with PLC S7-1200 and HMI
+- write a proper documentation
 
 Software Layers
 ========
@@ -47,7 +53,7 @@ Since there is no universal *Socketcan package* for PROFINET, following architec
 
 .. image:: rep-I000X/sw_layers.jpg
 
-ROS-PROFINET abstraction layer declares functions required for accessing PROFINET components as well as ROS layer implementation through messages, services and actions while particular hardware specific code is hidden in interface layer.  
+ROS-PROFINET abstraction layer declares functions required for accessing PROFINET components as well as ROS layer implementation through messages, services and actions. Hardware specific code linking vendor's SDK with abstraction layer is hidden in interface packages.
 
 
 Design Assumptions
@@ -56,12 +62,12 @@ ToDo
 
 CP1616
 ========
-ROS-PROFINET wrapper was originally developed for use with Siemens CP1616 [#cp1616]_, which is a communication module, that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
+ROS-PROFINET wrapper was originally developed for use with Siemens CP1616 [#cp1616]_, a communication module that enables PGs/PCs equipped with a PCI slot to be connected to PROFINET. Since CP1616 offers the communication possibilities of both **IO Controllers/IO Devices** (master/slave), various network configurations are possible. 
 
 .. image:: rep-I000X/cp1616.jpg
 
 
-From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 over the standard Ethernet. Afterwards, user's Linux (or other OS) application addresses existing configuration and access particular communication channels defined in SIMATIC project. 
+From user point of view, CP1616 acts like a standard PROFINET IO device - STEP7 or Simatic NCM tools are are required for basic topology setup, while the configuration is downloaded to CP1616 over the standard Ethernet. Afterward, user's Linux (or other OS) application addresses existing configuration and access particular communication channels defined in SIMATIC project. 
 
 CP1616 covers all three methods of exchanging data in PROFINET network:
 
@@ -109,7 +115,7 @@ Original IO Base API including programming examples is available here [#io_base_
 Linux kernel & RTAI
 ---------
 
-Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13** it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is necessary.    
+Current version of DK-16xx PN IO - V2.6 works only with Linux kernels **older than 3.8**. Since Ubuntu 12.04 LTS uses Linux kernel **3.11** and Ubuntu 14.04 LTS **3.13**, it is not possible to make Linux CP1616 driver on latest Ubuntu LTS releases. Until new version of CP1616 driver is released, compilation and installation of *< 3.8 kernel* is necessary.    
 
 In order to use isochronous real time (IRT), installation of the real-time extension RTAI [#rtai]_ is also recommended, since without these extensions, Linux takes up to 1 ms to report interrupt to the application. RTAI patches are available only for certain Linux kernels, RTAI4.0 for example supports 3.4.67, 3.5.7, 3.8.13.  
  
