@@ -46,18 +46,18 @@ Project goals
 
 - define ROS-PROFINET abstraction layer 
 - develop *cp1616_interface* package
-- demonstrate the functionality in combination with PLC S7-1200 and HMI
+- demonstrate the functionality in combination with Siemens S7-1200 PLC and Simatic TP HMI.
 - write a proper documentation
 
 
 Software Layers
 ========
 
-Since there is no universal *Socketcan package* for PROFINET, following architecture was designed in order to make wrapper usable with various components:
+Since there is no universal *"Socketcan package"* for PROFINET, following architecture was designed in order to make wrapper usable with various components:
 
 .. image:: rep-I000X/sw_layers.jpg
 
-ROS-PROFINET abstraction layer declares functions required for accessing PROFINET components as well as ROS layer implementation through messages, services and actions. Hardware specific code linking vendor's SDK with abstraction layer is hidden in interface packages.
+ROS-PROFINET abstraction layer declares functions required for accessing PROFINET components as well as ROS layer implementation. Hardware specific code linking vendor's SDK with abstraction layer is hidden in interface packages.
 
 
 Design Assumptions
