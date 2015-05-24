@@ -32,6 +32,11 @@ Hardware interfaces are top-level priority in ROS-Industrial Roadmap [#ros-i_roa
 
 Mapping worldwide production system interfaces, fieldbus technology is definitelly the most progressive one. Due to several reasons (support, available hardware components, opennes, real-time performance, scope) we decided to experiment with **PROFINET**, since integration of this standard could be one of the possible ways how to allow ROS-I systems to communicate with PCL's HMI's, OPCs and various industrial hardware.  
 
+In addition to interfacing peripherals we would like to address following two scenarios in particular: 
+
+- Integration of ROS-I system into existing industrial network (PLC as a master)
+- Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
+
 Project goals
 ---------
 
@@ -44,10 +49,6 @@ Project goals
 - demonstrate the functionality in combination with PLC S7-1200 and HMI
 - write a proper documentation
 
-In addition to interfacing peripherals we would like to address following two scenarios in particular: 
-
-- Integration of ROS-I system into existing industrial network (PLC as a master)
-- Using ROS-I as a high level system for industrially driven mechanics (PC as a master)
 
 Software Layers
 ========
