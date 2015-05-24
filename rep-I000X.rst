@@ -15,7 +15,7 @@ Outline
 #. `Software Layers`_ 
 #. `Design Assumptions`_
 #. CP1616_
-#. `Related packages`
+#. `Related packages`_
 #. References_
 #. Copyright_
 
